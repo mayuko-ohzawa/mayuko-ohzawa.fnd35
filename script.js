@@ -121,6 +121,7 @@ async function sendToGoogleCloud(text) {
     const response = await fetch(`${googleAPI}?key=${googleAPIKey}`, {
       method: "POST",
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(requestBody)
