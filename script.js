@@ -2,9 +2,9 @@
 // 1行目に記載している 'use strict' は削除しないでください
 
 const googleAPI = "https://language.googleapis.com/v1/documents:analyzeSentiment";
-const googleAPIKey = "AIzaSyBQ8yVEOZST1oEoP1yV1yHvM6eJDE1dGDQ";
+const googleAPIKey = "YOUR_APIKey";
 const chatGPTAPI = "https://api.openai.com/v1/chat/completions";
-const openAIKey = "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";
+const openAIKey = "YOUR_APIKey;
 
 let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "ja-JP";
