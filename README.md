@@ -9,4 +9,11 @@
 ※Web SpeechRecognition APIはブラウザによっては機能しない可能性があります。  
 ※Google Natural Language APIはセキュリティの観点からAPIキーを指定していないため，Github Pages上では機能しません。  
 ※openAI APIはアクセスが集中している場合は機能しません。
+  
+【作成にあたって苦労した点】
 
+
+【改善点】
+音声ファイルやログをクラウドに保存
+テキストから読み取り→表情や音声の音響的特徴
+joy/sad/anger/neutral
