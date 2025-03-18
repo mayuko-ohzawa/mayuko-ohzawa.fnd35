@@ -2,9 +2,9 @@
 // 1行目に記載している 'use strict' は削除しないでください
 
 const googleAPI = "https://language.googleapis.com/v1/documents:analyzeSentiment";
-const googleAPIKey = "googleAPIKey";
+const googleAPIKey = "AIzaSyBQ8yVEOZST1oEoP1yV1yHvM6eJDE1dGDQ";
 const chatGPTAPI = "https://api.openai.com/v1/chat/completions";
-const openAIKey = "openAIKey";
+const openAIKey = "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";
 
 let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "ja-JP";
@@ -25,6 +25,13 @@ const emotionMusicMap = {
   sadness: ["https://youtu.be/G7KNmW9a75Y?feature=shared"],
   anger: ["https://youtu.be/up0t2ZDfX7E?feature=shared"],
   neutral: ["https://youtu.be/dQw4w9WgXcQ?feature=shared"]
+};
+
+const fallbackMessages = {
+  joy: "It sounds like you're having a great time! Keep enjoying😊",
+  sadness: "I'm here for you. Things will get better💙",
+  anger: "Take a deep breath. Let's find a way to calm down😌",
+  neutral: "Thanks for sharing! Let me know if you need anything."
 };
 
 recordButton.addEventListener("click", startRecording);
@@ -164,7 +171,7 @@ async function sendToChatGPT(text, emotion) {
     chatBox.innerText = `ChatBot: ${data.choices[0].message.content}`;
   } catch (error) {
     console.error("ChatGPT Error:", error);
-    chatBox.innerText = `ChatBot: Sorry, I can't respond right now. But I'm here for you!`;
+    chatBox.innerText = `ChatBot: ${fallbackMessages[emotion]}`;
   }
 }
 
@@ -195,5 +202,5 @@ function handleEmotionResponse(text, data) {
 
   logChat(text, emotion);
   sendToChatGPT(text, emotion);
-  playEmotionMusic(emotion);
+  // playEmotionMusic(emotion);
 }
