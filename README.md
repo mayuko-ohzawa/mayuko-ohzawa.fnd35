@@ -1,0 +1,1 @@
+音声を入力するとそのテキスト情報から感情を認識してチャットボットが反応します。音声認識にはWeb SpeechRecognition API，感情認識にはGoogle Natural Language API，チャットボットはChat GPT API
