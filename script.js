@@ -2,9 +2,9 @@
 // 1行目に記載している 'use strict' は削除しないでください
 
 const googleAPI = "https://language.googleapis.com/v1/documents:analyzeSentiment";
-const googleAPIKey = "YOUR_API_Key";
+const googleAPIKey = "AIzaSyBQ8yVEOZST1oEoP1yV1yHvM6eJDE1dGDQ";
 const chatGPTAPI = "https://api.openai.com/v1/chat/completions";
-const openAIKey = "YOUR_API_Key";
+const openAIKey = "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";
 
 let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "ja-JP";
@@ -58,8 +58,7 @@ function stopRecording() {
 
 function processAudio() {
   const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
-  const latestLog = chatLog.length > 0 ? chatLog[chatLog.length - 1] : { emotion: "neutral" };
-  saveAudioFile(audioBlob, latestLog.emotion);
+  saveAudioFile(audioBlob, currentEmotion);
 }
 
 function saveAudioFile(audioBlob, emotion) {
@@ -190,14 +189,14 @@ function handleEmotionResponse(text, data) {
   }
   
   const score = data.documentSentiment.score;
-  let emotion = "neutral";
-  
   if (score > 0.25) {
     emotion = "joy";
   } else if (score < -0.5) {
     emotion = "anger";
   } else if (score < -0.25) {
     emotion = "sadness";
+  } else {
+    emotion = "neutral";
   }
 
   logChat(text, emotion);
