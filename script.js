@@ -2,9 +2,9 @@
 // 1行目に記載している 'use strict' は削除しないでください
 
 const googleAPI = "https://language.googleapis.com/v1/documents:analyzeSentiment";
-const googleAPIKey = "YOUR_APIKey";
+const googleAPIKey = "YOUR_API_Key";
 const chatGPTAPI = "https://api.openai.com/v1/chat/completions";
-const openAIKey = "YOUR_APIKey;
+const openAIKey = "YOUR_API_Key";
 
 let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 recognition.lang = "ja-JP";
@@ -121,7 +121,6 @@ async function sendToGoogleCloud(text) {
     const response = await fetch(`${googleAPI}?key=${googleAPIKey}`, {
       method: "POST",
       headers: {
-        "Accept": "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(requestBody)
